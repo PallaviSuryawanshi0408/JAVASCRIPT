@@ -44,3 +44,22 @@ const myFunction = function(){
 console.log(typeof myFunction);
 
 // https://262.ecma-international.org/5.1/#sec-11.4.3
+
+//************************************************************** */
+
+// Primitive DataType (Stack ) -creates a copy 
+// Non-Primitive Datatype (Heap ) memory - direct reference to memory 
+let Myname ="pallavisuryawanshi"
+let AnotherName = Myname
+AnotherName = "teena "
+console.log(Myname)
+console.log(AnotherName)
+
+let UserOne ={
+    name : "pallavi",
+    email : "pallavisuryawanshi89@gmail.com"
+}
+let UserTwo = UserOne
+UserTwo.name="Ladoo"
+console.log(UserOne)
+console.log(UserTwo)
