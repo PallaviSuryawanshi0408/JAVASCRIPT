@@ -1,4 +1,5 @@
-// const tinderUser = new Object()
+// const tinderUser = new Object() //--constructor object singleton
+
 const tinderUser = {}
 
 tinderUser.id = "123abc"
@@ -23,6 +24,7 @@ const obj2 = {3: "a", 4: "b"}
 const obj4 = {5: "a", 6: "b"}
 
 // const obj3 = { obj1, obj2 }
+// console.log(obj3===obj1); //true because all the values of obj2 source is coping to obj1 which is target
 // const obj3 = Object.assign({}, obj1, obj2, obj4)
 
 const obj3 = {...obj1, ...obj2}
@@ -44,7 +46,7 @@ const users = [
 console.log(users[1].id);
 console.log(tinderUser);
 
-console.log(Object.keys(tinderUser));
+console.log(Object.keys(tinderUser));//all three keys values and entries return value in an array form
 console.log(Object.values(tinderUser));
  console.log(Object.entries(tinderUser));
 
@@ -57,12 +59,12 @@ const course = {
 }
 
 // course.courseInstructor
-
+//destructuring of object values 
 const {courseInstructor: instructor} = course
 
 // console.log(courseInstructor);
 console.log(instructor);
-
+/**********************api json***********/
 // {
 //     "name": "hitesh",
 //     "coursename": "js in hindi",

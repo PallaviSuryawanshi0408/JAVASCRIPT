@@ -11,15 +11,15 @@ const Myobj={
     Email:"pallavisuryawanshi0408@gmail.com",
     LoggedInDays:["monday","friday"],
     IslogIn:true,
-    // [mySym]: "mykey1" //will give the write value but typeof this symbol will change as string
+    // mySym: "mykey1" //will give the write value but typeof this symbol will change as string
     [mySym]: "mykey1"
 }
 
 //way to access obj values 
-console.log(Myobj.Name); //not always refer this one because in som cases it doesn't recognize the datatype
+console.log(Myobj.Name); //not always refer this one because in some cases it doesn't recognize the datatype
 
 console.log(Myobj.FullName);//it can give error
-console.log(Myobj["FullName"]);//write way
+console.log(Myobj["FullName"]);//right way
 
 //how can you access symbol in obj
 console.log(typeof Myobj.mySym);
