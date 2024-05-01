@@ -65,4 +65,4 @@ Call Stack: When a program starts execution JavaScript pushes the whole program 
            ^
            |
            |  
-     GLOBAL EXECUTION CONTEXT
+     GLOBAL EXECUTION CONTEXT*/
