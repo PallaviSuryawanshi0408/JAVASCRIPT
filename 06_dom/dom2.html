@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body style="background-color: #212121; color: aliceblue;">
+    <div class="parent">
+        <div class="day">day1</div>
+        <div class="day">day2</div>
+        <div class="day">day3</div>
+        <div class="day">day4</div>
+    </div>
+
+    <script>
+        const Parent = document.querySelector('.parent')
+        console.log(Parent)
+        console.log(Parent.children);//return HTMLCollection(4)
+        console.log(Parent.children[1])
+
+        for (let index = 0; index <Parent.children.length; index++) {
+           console.log(Parent.children[index].innerHTML)
+            
+        }
+
+        console.log(Parent.firstElementChild)
+        console.log(Parent.lastElementChild)
+
+        const firstDay =document.querySelector('.day')
+        console.log(firstDay);
+        console.log(firstDay.parentElement);
+        console.log(firstDay.nextElementSibling);
+
+        console.log(Parent.childNodes)
+    </script>
+</body>
+</html>
