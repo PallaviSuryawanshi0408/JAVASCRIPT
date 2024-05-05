@@ -27,6 +27,21 @@
     }
     optaddlang('ruby')
     optaddlang('golang')
+
+    //edit 
+    const secondlang = document.querySelector('li:nth-child(2)')
+    const newlang = document.createElement('li')
+    newlang.textContent="mojo"
+    secondlang.replaceWith(newlang)
+    //edit 
+   const firstlang = document.querySelector('li:first-child')
+   firstlang.outerHTML= "<li>typescript</li>"
+
+
+//    remove 
+  const lastlang = document.querySelector('li:last-child')
+   lastlang.remove()
+
    
 </script>
 </html>
