@@ -1,6 +1,9 @@
 const form = document.querySelector('form');
 // this usecase will give you empty
 // const height = parseInt(document.querySelector('#height').value)
+// Missing Input Field: If there is no input field with the id "height" in the document, document.querySelector('#height') will return null. Trying to access the value property of null will result in an error, but if it's wrapped in parseInt(), it will simply return NaN (Not a Number).
+
+// Empty Input Field: If there is an input field with the id "height" but it is empty (i.e., the user has not entered anything into it), then parseInt('') will also return NaN.
 
 form.addEventListener('submit', function (e) {
   e.preventDefault();
