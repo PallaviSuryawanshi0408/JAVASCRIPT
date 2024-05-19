@@ -1,0 +1,76 @@
+By design, JavaScript is a synchronous(In synchronous programming, steps defined sequentially occur in the same order.In simple words, synchronously means the code is executed a line after the other.) and single threaded(One command processes at a time.Within the call stack, your JS code is read and gets executed line by line. Now, JavaScript is a single-threaded language, which means it has only one call stack that is used to execute the program.) scripting language. In fact, many of the widely used asynchronous functions in JavaScript are not part of the core language. 
+//read about execution context next 
+What is Blocking?
+It refers to the blocking of further operation until the current operation finishes. Blocking methods are executed synchronously. Synchronously means that the program is executed line by line. The program waits until the called function or the operation returns.
+What is Non-Blocking ?
+It refers to the program that does not block the execution of further operations. Non-Blocking methods are executed asynchronously. Asynchronously means that the program may not necessarily execute line by line. The program calls the function and move to the next operation and does not wait for it to return.
+
+JavaScript programs rely on a JavaScript runtime environment for execution. Browsers, like Chrome and Firefox, and application servers, like Node.js, include a runtime environment as part of the application. This enables websites to run JavaScript in client browsers and standalone JavaScript applications to run in Node.js.
+
+While Chrome and Node.js use the Google V8 JavaScript engine, Firefox uses its own engine, SpiderMonkey. 
+JavaScript uses a single-threaded, nonblocking, event loop to provide concurrency. Rather than rely on thread management to manage multiple I/O tasks, JavaScript engines use events and callbacks to handle asynchronous requests.
+
+In the client browser callbacks enable JavaScript code to make a call that might take a long time to respond, like a web service API call, without “freezing” the web page while it waits for a response. 
+In server-side applications, like those running on Node.js, it’s the event and callback structure that enables JavaScript to be used effectively for applications that inherently require a lot of asynchronous multitasking, like web servers.
+
+Because JavaScript is a synchronous language by design, and because the event loop is implemented in the JavaScript engines that are part of browsers and application servers, all of the asynchronous functionality in JavaScript is implemented in external libraries.
+
+//function saySomethingNice() {
+    console.log(`Nice to meet you.`);
+}
+function greet(name) {
+    console.log(`Hello ${name}!`);
+    saySomethingNice();
+}
+greet('John');
+
+It’s obvious what the order of the output will be:
+
+Hello John!
+Nice to meet you.
+
+the setTimeout() method. It accepts two parameters: the first is a function you want to execute and the second is the time, in milliseconds, the program should wait before executing the function. The function to be executed is passed to setTimeout as an argument. This is a callback function:In the case of setTimeout, this just means waiting a number of milliseconds.
+
+function greet(name) {
+   setTimeout(() => console.log(`Hello ${name}!`), 1000);
+   saySomethingNice();
+}
+Your output will look like the following. It’s not a bug or mistake.
+
+Nice to meet you.
+Hello John!
+used setTimeout to delay the greet(name) function's console output for one second.
+
+Decrease the timeout to 0, as shown below, and run the code
+function greet(name) {
+   setTimeout(() => console.log(`Hello ${name}!`), 0);
+   saySomethingNice();
+}
+
+You might think that “Hello John!” should be displayed immediately and followed by “Nice to meet you.” Since you changed the setTimeout interval to 0 it seems reasonable that the output from the callback function will appear immediately.
+
+But your results will still be:
+
+Nice to meet you.
+Hello John!
+This is correct functionality, and it works this way because setTimeout causes the callback function to be executed after a given amount of time—but it does not block execution of the rest of the code on the stack. This is referred to as a "non-blocking" event model,
+
+The output appears in this unexpected order because of the order of execution in JavaScript’s event loop model. Each function in the stack executes completely before execution moves to the next function.
+
+JavaScript uses a lot of APIs which are not part of the language. In fact, the setTimeout function is actually part of two external APIs: the Window API, which is included in browser JavaScript runtimes like V8, and the WorkerGlobalScope API that's a part of the Node.js runtime engine.
+
+Here is where the JavaScript callback queue and event loop act as a mechanism to communicate with external APIs. Whenever a function on the stack makes an external API call, JavaScript calls that API and says to it: “Here are the parameters for your task. Do your job, and when you are done leave me a callback function to be executed in the callback queue. I will execute it when the stack is empty”.
+
+the above code the order of execution works like this:
+
+1. The program begins executing in the anonymous main function.
+2. The greet('John') function call is placed on the stack and begins executing
+3. The setTimeout(() => console.log(Hello ${name}!), 0); function is placed on the stack and begins executing.
+4. It calls the setTimeout API, which places () => console.log(Hello ${name}!) in the callback queue immediately because the timeout is set to 0.
+
+5. The saySomethingNice() function executes and displays "Nice to meet you."
+6. The greet('John'); function finishes executing and is removed from the execution stack.
+7. The execution stack is now empty, so the event loop checks to see if there are any functions in the callback queue.
+8. The event loop picks up the console.log(Hello ${name}!) callback function from the callback queue and places it in the execution stack.
+9. console.log(Hello ${name}!`) executes and displays "Hello John!".
+10. The program finishes executing.
