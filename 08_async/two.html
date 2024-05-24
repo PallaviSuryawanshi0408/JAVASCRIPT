@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Js Async Functions</h1>
+    <p></p>
+    <button id="start">start</button>
+    <button id="stop">stop</button>
+</body>
+<script>
+    let intervalId;
+    //The setInterval() method, offered on the Window and WorkerGlobalScope interfaces, repeatedly calls a function or executes a code snippet, with a fixed time delay between each call.
+   //The global clearInterval() method cancels a timed, repeating action which was previously established by a call to setInterval().
+    const dateTime = function(){
+        const currentTime = new Date();
+        document.querySelector('p').innerHTML= currentTime.toLocaleTimeString();
+    }
+    const startTime = function()  {
+       intervalId= setInterval(dateTime,1000);
+    }
+    
+   const stopTime = function(){
+        clearInterval(intervalId);
+    }
+
+    document.querySelector("#start").addEventListener('click',startTime);
+    document.querySelector("#stop").addEventListener('click',stopTime);
+
+
+
+    
+</script>
+</html>
