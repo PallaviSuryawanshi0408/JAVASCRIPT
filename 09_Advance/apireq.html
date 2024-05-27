@@ -1,0 +1,40 @@
+//An API, or Application Programming Interface, is a set of rules and protocols for building and interacting with software applications. It's like a bridge that allows different software systems to communicate and share information. For instance, a YouTube API enables developers to integrate YouTube's functionalities, like uploading videos, retrieving comments, or managing playlists, into their own applications or websites. This helps in expanding YouTube's features and services beyond its platform. APIs use standardized requests and responses, making it easier for developers to access and use functionalities of a larger software system like YouTube in a consistent and efficient way.
+some of api examples :- https://api.github.com/users/PallaviSuryawanshi0408
+or some random api generate:- randomuser.me
+for reading the api we can use json formattor ;- https://jsonformatter.org/
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API request through xml</title>
+</head>
+<body>
+    All modern browsers have a built-in XMLHttpRequest object to request data from a server.
+    0	UNSENT	Client has been created. open() not called yet.
+    1	OPENED	open() has been called.
+    2	HEADERS_RECEIVED	send() has been called, and headers and status are 
+        available.
+    3	LOADING	Downloading; responseText holds partial data.
+    4	DONE	The operation is complexe.
+</body>
+<script>
+    const reqUrl = 'https://api.github.com/users/PallaviSuryawanshi0408';
+    const xhr =   new XMLHttpRequest();
+//    console.log (xhr.readyState)//check the ready status stage
+     xhr.open('GET',reqUrl);
+     xhr.onreadystatechange = function(){
+        console.log(xhr.readyState);
+        if(xhr.readyState === 4){
+            const data = JSON.parse(this.responseText);
+            console.log(data.created_at);
+        }
+     }
+     
+     xhr.send();
+</script>
+
+//read more about console.log not the part of core js v8 engine
+</html>
