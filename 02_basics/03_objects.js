@@ -1,12 +1,12 @@
 // singleton
-// Object.create //--constructor method--
+// Object.create //--constructor method-- /*when object is created with cunstroctor method always use singleton but not in literals*/
 
 // object literals
 const mySym = Symbol("key1")
 
 const Myobj={
     Name:"Pallavi",
-    "FullName":"pallavi suryawanshi",
+    "Full Name":"pallavi suryawanshi",
     Age:23,
     Email:"pallavisuryawanshi0408@gmail.com",
     LoggedInDays:["monday","friday"],
@@ -18,8 +18,8 @@ const Myobj={
 //way to access obj values 
 console.log(Myobj.Name); //not always refer this one because in some cases it doesn't recognize the datatype
 
-console.log(Myobj.FullName);//it can give error
-console.log(Myobj["FullName"]);//right way
+console.log(Myobj.Full Name);//it can give error
+console.log(Myobj["Full Name"]);//right way
 
 //how can you access symbol in obj
 console.log(typeof Myobj.mySym);
