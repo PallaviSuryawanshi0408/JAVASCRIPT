@@ -1,4 +1,6 @@
-
+// map() transforms each element of an array and returns a new array of the same length.
+// reduce() accumulates all elements of an array into a single value (e.g., sum, product, etc.).
+// filter() returns a new array containing only elements that pass a specified condition.
 const myNums = [1, 2, 3]
 
 // const myTotal = myNums.reduce(function (acc, currval) {
